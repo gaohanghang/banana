@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>banana</name>
-	<description>Demo project for Spring Boot</description>
+	<description>在线生成ASCII字符</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

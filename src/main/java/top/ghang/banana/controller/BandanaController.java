@@ -14,16 +14,9 @@ import java.util.List;
 @Controller
 public class BandanaController {
 
+    //获取字符接口
     @ResponseBody
     @PostMapping("/getBanana")
-    public String testShowUser1(@RequestParam(name = "text") String text, ModelMap modelMap){
-        String bananaify = BananaUtils.bananaify(text);
-        modelMap.addAttribute("banana",bananaify);
-        return "index";
-    }
-
-    @ResponseBody
-    @PostMapping("/getBanana1")
     public String testShowUser(@RequestParam(name = "text") String text,@RequestParam(name = "font") String font,ModelMap modelMap){
         String bananaify = null;
         if ("默认".equals(font)) {
@@ -31,20 +24,15 @@ public class BandanaController {
         } else {
             bananaify = BananaUtils.bananaify(text,font);
         }
-        System.out.println(bananaify);
         return bananaify;
     }
 
-    @ResponseBody
-    @RequestMapping("hello")
-    public String hello() {
-        return "Hello World %n dd";
-    }
-
+    //首页
     @RequestMapping("/")
     public String index(ModelMap modelMap) {
         List<String> fonts     = BananaUtils.fonts();
         modelMap.addAttribute("fonts",fonts);
         return "index";
     }
+
 }

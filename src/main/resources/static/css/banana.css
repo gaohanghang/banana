@@ -1,0 +1,33 @@
+body {
+}
+
+.myTextDiv {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#input {
+    resize: none;
+}
+
+#output {
+    font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+    height: 200px;
+    resize: none;
+    overflow:auto;
+}
+
+#font-div{
+    font-size: 20px;
+}
+
+select{
+    background:#ffffff;
+    height:28px;
+    width:180px;
+    line-height:28px;
+    border:1px solid #9bc0dd;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
+}
