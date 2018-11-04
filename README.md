@@ -25,7 +25,7 @@
 
 - 快速部署
 
-###原理说明
+### 原理说明
 
 本项目基于 [yihleego](https://github.com/yihleego) 的 [banana](https://github.com/yihleego/banana) 项目，实现了在网页上在线生成的功能，使得获取想要的ASCII字符更方便快捷。
 
