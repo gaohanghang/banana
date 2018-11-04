@@ -12,7 +12,7 @@ body {
 
 #output {
     font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-    height: 200px;
+    height: 300px;
     resize: none;
     overflow:auto;
 }
