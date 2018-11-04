@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="//layui.hcwl520.com.cn/layui/css/layui.css?v=201809030202">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-dropdown/2.0.3/jquery.dropdown.css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">-->
+    <style>
+        body {
+        }
+
+        .myTextDiv {
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+        #output {
+            font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+            height: 200px;
+            resize: none;
+            overflow:auto;
+        }
+
+        #font-div{
+            font-size: 20px;
+        }
+
+        select{
+            background:#ffffff;
+            height:28px;
+            width:180px;
+            line-height:28px;
+            border:1px solid #9bc0dd;
+            -moz-border-radius:2px;
+            -webkit-border-radius:2px;
+            border-radius:2px;
+        }
+    </style>
+
+</head>
+<body>
+<fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
+    <legend style="text-align: center">生成ASCII字符</legend>
+
+    <!-- 文本输入和提交 -->
+    <div class="layui-form-item">
+        <div class="myTextDiv">
+            <input id="input" name="text" placeholder="请输入内容(不支持中文)" class="layui-input"></input>
+        </div>
+    </div>
+
+    <!-- 字体下拉选择框 -->
+    <div class="layui-form-item" id="font-div">
+        <label style="margin-left: 50px">字体选择</label>
+        <select id="font" name="font" class="dropdown">
+            <option value="默认">默认</option>
+            <option th:each="font:${fonts}" th:value="${font}" th:text="${font}"
+            ></option>
+        </select>
+    </div>
+
+    <!-- 提交和重置按钮 -->
+    <div class="layui-form-item">
+        <button id="submitButton" class="layui-btn" style="margin-left: 50px">立即提交</button>
+        <button id="reset" class="layui-btn layui-btn-warm">重置</button>
+    </div>
+
+    <!-- 结果展示 -->
+    <div class="layui-form-item layui-form-text">
+        <div class="myTextDiv">
+            <textarea id="output" readonly  class="layui-textarea"></textarea>
+        </div>
+    </div>
+
+</fieldset>
+<script src="//layui.hcwl520.com.cn/layui/layui.js?v=201809030202"></script>
+<script src="http://cdn.bootcss.com/jquery/1.8.1/jquery.js"></script>
+<style src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dropdown/2.0.3/jquery.dropdown.js"></style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.11/sweetalert2.all.js"></script>
+<!--<h1 th:text="${name}">Hello World</h1>-->
+<script>
+    $(document).ready(function () {
+
+        //重置按钮方法
+        $("#reset").click(function () {
+            $("#input").val("");
+        });
+
+        //下拉选发生改变就ajax提交
+        $("#font").change(function () {
+            //获取输入的文本
+            var input = $("#input").val();
+
+            //获取选择的字体
+            var font = $("#font option:selected").text();
+
+            //输入内容非空判断
+            if (input == null || input == "" || input == undefined) {
+                swal({
+                    text: "输入的内容不能为空",
+                    type: "error"
+                });
+                return;
+            }
+
+            //是否含有中文判断
+            if (/.*[\u4e00-\u9fa5]+.*/.test(input)) {
+                swal({
+                    text: "暂不支持中文",
+                    type: "error"
+                });
+            }
+
+            $.ajax({
+                url: "/getBanana1",
+                type: "POST",
+                data: {text: input, font : font},
+                success: function (result) {
+                    $("#output").text(result)
+                }
+            })
+        });
+
+        //数据提交
+        $("#submitButton").click(function () {
+
+            //获取输入的文本
+            var input = $("#input").val();
+
+            //获取选择的字体
+            var font = $("#font option:selected").text();
+
+            //输入内容非空判断
+            if (input == null || input == "" || input == undefined) {
+                swal({
+                    text: "输入的内容不能为空",
+                    type: "error"
+                });
+                return;
+            }
+
+            //是否含有中文判断
+            if (/.*[\u4e00-\u9fa5]+.*/.test(input)) {
+                swal({
+                    text: "暂不支持中文",
+                    type: "error"
+                });
+            }
+
+            $.ajax({
+                url: "/getBanana1",
+                type: "POST",
+                data: {text: input, font : font},
+                success: function (result) {
+                    $("#output").text(result)
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>
