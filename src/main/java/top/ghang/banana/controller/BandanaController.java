@@ -17,12 +17,12 @@ public class BandanaController {
     //获取字符接口
     @ResponseBody
     @PostMapping("/getBanana")
-    public String testShowUser(@RequestParam(name = "text") String text,@RequestParam(name = "font") String font,ModelMap modelMap){
+    public String testShowUser(@RequestParam(name = "text") String text, @RequestParam(name = "font") String font, ModelMap modelMap) {
         String bananaify = null;
         if ("默认".equals(font)) {
             bananaify = BananaUtils.bananaify(text);
         } else {
-            bananaify = BananaUtils.bananaify(text,font);
+            bananaify = BananaUtils.bananaify(text, font);
         }
         return bananaify;
     }
@@ -30,8 +30,8 @@ public class BandanaController {
     //首页
     @RequestMapping("/")
     public String index(ModelMap modelMap) {
-        List<String> fonts     = BananaUtils.fonts();
-        modelMap.addAttribute("fonts",fonts);
+        List<String> fonts = BananaUtils.fonts();
+        modelMap.addAttribute("fonts", fonts);
         return "index";
     }
 

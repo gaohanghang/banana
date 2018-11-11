@@ -21,6 +21,7 @@ body {
     font-size: 20px;
 }
 
+/*下拉选择框美化*/
 select{
     background:#ffffff;
     height:28px;

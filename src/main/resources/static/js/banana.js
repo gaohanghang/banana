@@ -44,11 +44,11 @@ $(document).ready(function () {
         $.ajax({
             url: "/getBanana",
             type: "POST",
-            data: {text: input, font : font},
+            data: {text: input, font: font},
             success: function (result) {
                 $("#output").text(result)
             }
         })
 
     }
-})
+});
