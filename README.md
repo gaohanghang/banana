@@ -45,6 +45,7 @@ git克隆后使用idea打开即可
 
 - [ ] 修复输入多行文本，中间如果有一行为空，其余不输出的bug
 
+- [ ] 使用[nes.css](https://nostalgic-css.github.io/NES.css/) 对页面进行像素化
 
 ## License
 
